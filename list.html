@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Entrada de Invitado - Caspe</title>
+    <title>Entrada de Invitado - Darialavida</title>
     <style>
         body, html {
             height: 100%;
@@ -43,12 +43,6 @@
             const qrImage = await pdfDoc.embedPng(qrCodeDataURL);
             const page = pdfDoc.getPage(0);
 
-            page.drawImage(qrImage, {
-                x: 166,
-                y: 436,
-                width: 43,
-                height: 43
-            });
 
             page.drawImage(qrImage, {
                 x: 503,
@@ -57,30 +51,37 @@
                 height: 56
             });
 
-            const latoFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold); // Replace with actual Lato Bold font if available
+            const latoFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold); 
 
-            page.drawText(name+' '+surname, {
-                x: 36,
-                y: 470,
+            page.drawText(name, {
+                x: 370,
+                y: 595,
                 size: 9,
                 font: latoFont,
-                color: PDFLib.rgb(1, 1, 1)
+                color: PDFLib.rgb(0, 0, 0)
+            });
+            page.drawText(surname, {
+                x: 370,
+                y: 567,
+                size: 9,
+                font: latoFont,
+                color: PDFLib.rgb(0, 0, 0)
             });
 
-            // Add text for 'code'
+
             page.drawText(code, {
                 x: 36,
                 y: 433,
                 size: 12,
                 font: latoFont,
-                color: PDFLib.rgb(1, 1, 1)
+                color: PDFLib.rgb(0, 0, 0)
             });
 
             const pdfBytes = await pdfDoc.save();
             const blob = new Blob([pdfBytes], { type: 'application/pdf' });
             const url = URL.createObjectURL(blob);
             displayPDF(url);
-            downloadPDF(blob, 'caspe-lista.pdf');
+            downloadPDF(blob, 'darialavida-lista.pdf');
 
         }
     });
