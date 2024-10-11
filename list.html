@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Entrada de Invitado - Darialavida</title>
+    <title>Entrada - Darialavida</title>
     <style>
         body, html {
             height: 100%;
@@ -38,7 +38,7 @@
                 margin: 2
                 
             });
-            const existingPdfBytes = await fetch('lista.pdf').then(res => res.arrayBuffer());
+            const existingPdfBytes = await fetch('entrada.pdf').then(res => res.arrayBuffer());
             const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
             const qrImage = await pdfDoc.embedPng(qrCodeDataURL);
             const page = pdfDoc.getPage(0);
@@ -81,7 +81,7 @@
             const blob = new Blob([pdfBytes], { type: 'application/pdf' });
             const url = URL.createObjectURL(blob);
             displayPDF(url);
-            downloadPDF(blob, 'darialavida-lista.pdf');
+            downloadPDF(blob, 'darialavida-entrada.pdf');
 
         }
     });
